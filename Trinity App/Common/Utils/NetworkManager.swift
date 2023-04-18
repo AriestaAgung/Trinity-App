@@ -19,9 +19,11 @@ class NetworkManager {
             
         ]
         var urlRequest = URLRequest(url: url)
-        if let parameter = parameter{
-            let parameterData = try? JSONEncoder().encode(parameter)
-            urlRequest.httpBody = parameterData
+        if let parameter = parameter {
+            if (parameter is EmptyRequest) == false {
+                let parameterData = try? JSONEncoder().encode(parameter)
+                urlRequest.httpBody = parameterData
+            }
         }
         urlRequest.headers = header
         urlRequest.method = method
@@ -29,7 +31,9 @@ class NetworkManager {
         AF.request(urlRequest)
             .validate()
             .responseDecodable(of: responseModel) { response in
-                completion(response.result)
+                DispatchQueue.main.async {
+                    completion(response.result)
+                }
             }
     }
     

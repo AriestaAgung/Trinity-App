@@ -17,16 +17,16 @@ class ViewController: UIViewController {
 
     private func getNetwork() {
         NetworkManager.shared.callApi(
-            urlString: "https://dummyjson.com/users/",
+            urlString: "https://jsonplaceholder.typicode.com/todos/2",
             parameter: NetworkManager.emptyRequest,
-            method: .post,
-            responseModel: GoldDashboardFormResponseData.self
+            method: .get,
+            responseModel: StarterModel.self
         ) { response in
             switch response {
             case .success(let result):
                 dump(result)
             case .failure(let err):
-                print(err.localizedDescription)
+                print(err)
             }
         }
     }
