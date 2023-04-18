@@ -82,9 +82,7 @@
 		E52BB98D29EEF7200088E639 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				E52BB97A29EEE6780088E639 /* ViewController.swift */,
-				E52BB98A29EEF5EE0088E639 /* ViewController.xib */,
-				E52BB99729EEF7DB0088E639 /* SimpleModel.swift */,
+				E5553C7C29EF072C0080551B /* BaseViewController */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -104,7 +102,6 @@
 			children = (
 				E52BB99629EEF7860088E639 /* Extension */,
 				E52BB99229EEF7490088E639 /* NetworkManager */,
-				E52BB99029EEF7450088E639 /* NetworkManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -112,6 +109,7 @@
 		E52BB99229EEF7490088E639 /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
+				E52BB99029EEF7450088E639 /* NetworkManager.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -121,6 +119,16 @@
 			children = (
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		E5553C7C29EF072C0080551B /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E52BB97A29EEE6780088E639 /* ViewController.swift */,
+				E52BB98A29EEF5EE0088E639 /* ViewController.xib */,
+				E52BB99729EEF7DB0088E639 /* SimpleModel.swift */,
+			);
+			path = BaseViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
