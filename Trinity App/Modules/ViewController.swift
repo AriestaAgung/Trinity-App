@@ -11,7 +11,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
         getNetwork()
     }
 
@@ -24,7 +23,12 @@ class ViewController: UIViewController {
         ) { response in
             switch response {
             case .success(let result):
-                dump(result)
+                let alert = UIAlertController(title: "Fetch Data Success", message: "RequestedName: \(result.title ?? "")", preferredStyle: .actionSheet)
+                let action = UIAlertAction(title: "OK", style: .default, handler: {_ in
+                    self.dismiss(animated: true)
+                })
+                alert.addAction(action)
+                self.present(alert, animated: true)
             case .failure(let err):
                 print(err)
             }

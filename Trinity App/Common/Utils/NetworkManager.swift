@@ -40,9 +40,5 @@ class NetworkManager {
 }
 
 struct EmptyRequest: Codable {
-//    let item: String?
-//    private enum CodingKeys: String, CodingKey {
-//        case item
-//    }
 }
 
