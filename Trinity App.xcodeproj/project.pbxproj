@@ -13,6 +13,9 @@
 		E52BB98029EEE67A0088E639 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E52BB97F29EEE67A0088E639 /* Assets.xcassets */; };
 		E52BB98329EEE67A0088E639 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E52BB98129EEE67A0088E639 /* LaunchScreen.storyboard */; };
 		E52BB98B29EEF5EE0088E639 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E52BB98A29EEF5EE0088E639 /* ViewController.xib */; };
+		E52BB99129EEF7450088E639 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52BB99029EEF7450088E639 /* NetworkManager.swift */; };
+		E52BB99529EEF77D0088E639 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E52BB99429EEF77D0088E639 /* Alamofire */; };
+		E52BB99829EEF7DB0088E639 /* SimpleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52BB99729EEF7DB0088E639 /* SimpleModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,8 @@
 		E52BB98229EEE67A0088E639 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E52BB98429EEE67A0088E639 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E52BB98A29EEF5EE0088E639 /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		E52BB99029EEF7450088E639 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		E52BB99729EEF7DB0088E639 /* SimpleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E52BB99529EEF77D0088E639 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +62,65 @@
 		E52BB97529EEE6780088E639 /* Trinity App */ = {
 			isa = PBXGroup;
 			children = (
-				E52BB97629EEE6780088E639 /* AppDelegate.swift */,
-				E52BB97829EEE6780088E639 /* SceneDelegate.swift */,
-				E52BB97A29EEE6780088E639 /* ViewController.swift */,
-				E52BB97F29EEE67A0088E639 /* Assets.xcassets */,
-				E52BB98129EEE67A0088E639 /* LaunchScreen.storyboard */,
-				E52BB98429EEE67A0088E639 /* Info.plist */,
-				E52BB98A29EEF5EE0088E639 /* ViewController.xib */,
+				E52BB98C29EEF7090088E639 /* Base */,
+				E52BB98E29EEF72E0088E639 /* Common */,
+				E52BB98D29EEF7200088E639 /* Modules */,
 			);
 			path = "Trinity App";
+			sourceTree = "<group>";
+		};
+		E52BB98C29EEF7090088E639 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				E52BB97629EEE6780088E639 /* AppDelegate.swift */,
+				E52BB97829EEE6780088E639 /* SceneDelegate.swift */,
+				E52BB98429EEE67A0088E639 /* Info.plist */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		E52BB98D29EEF7200088E639 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				E52BB97A29EEE6780088E639 /* ViewController.swift */,
+				E52BB98A29EEF5EE0088E639 /* ViewController.xib */,
+				E52BB99729EEF7DB0088E639 /* SimpleModel.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		E52BB98E29EEF72E0088E639 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E52BB97F29EEE67A0088E639 /* Assets.xcassets */,
+				E52BB98129EEE67A0088E639 /* LaunchScreen.storyboard */,
+				E52BB98F29EEF7360088E639 /* Utils */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		E52BB98F29EEF7360088E639 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E52BB99629EEF7860088E639 /* Extension */,
+				E52BB99229EEF7490088E639 /* NetworkManager */,
+				E52BB99029EEF7450088E639 /* NetworkManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E52BB99229EEF7490088E639 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		E52BB99629EEF7860088E639 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +139,9 @@
 			dependencies = (
 			);
 			name = "Trinity App";
+			packageProductDependencies = (
+				E52BB99429EEF77D0088E639 /* Alamofire */,
+			);
 			productName = "Trinity App";
 			productReference = E52BB97329EEE6780088E639 /* Trinity App.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +170,9 @@
 				Base,
 			);
 			mainGroup = E52BB96A29EEE6780088E639;
+			packageReferences = (
+				E52BB99329EEF77D0088E639 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = E52BB97429EEE6780088E639 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,6 +200,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E52BB99129EEF7450088E639 /* NetworkManager.swift in Sources */,
+				E52BB99829EEF7DB0088E639 /* SimpleModel.swift in Sources */,
 				E52BB97B29EEE6780088E639 /* ViewController.swift in Sources */,
 				E52BB97729EEE6780088E639 /* AppDelegate.swift in Sources */,
 				E52BB97929EEE6780088E639 /* SceneDelegate.swift in Sources */,
@@ -281,7 +345,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R2D4D7YLB2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Trinity App/Info.plist";
+				INFOPLIST_FILE = "Trinity App/Base/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -308,7 +372,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R2D4D7YLB2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Trinity App/Info.plist";
+				INFOPLIST_FILE = "Trinity App/Base/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -348,6 +412,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E52BB99329EEF77D0088E639 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E52BB99429EEF77D0088E639 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E52BB99329EEF77D0088E639 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E52BB96B29EEE6780088E639 /* Project object */;
 }
