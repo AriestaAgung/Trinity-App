@@ -33,6 +33,16 @@ class NetworkManager {
             }
     }
     
+    func readMockJSON(name: String, completion: @escaping(Data?, Error?) -> Void) {
+        if let path = Bundle.main.path(forResource: name, ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                completion(data, nil)
+            } catch let errr{
+                completion(nil, errr)
+            }
+        }
+    }
 }
 
 struct EmptyRequest: Codable {

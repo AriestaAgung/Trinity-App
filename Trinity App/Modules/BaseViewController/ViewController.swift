@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     let presenter = ViewControllerPresenter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getNetwork()
@@ -21,7 +22,7 @@ class ViewController: UIViewController {
                 self.dismiss(animated: true)
             })
             alert.addAction(action)
-            self.present(alert, animated: true)            
+            self.present(alert, animated: true)
         }
     }
 

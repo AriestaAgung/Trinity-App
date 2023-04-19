@@ -19,7 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        guard let _ = (scene as? UIWindowScene) else { return }
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = ViewController(nibName: "ViewController", bundle: nil)
+            let navController = UINavigationController(rootViewController: ContactListFactory().createContactListPage())
+            window.rootViewController = navController
             self.window = window
             window.makeKeyAndVisible()
         }
