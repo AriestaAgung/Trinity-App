@@ -11,6 +11,7 @@ class ContactListViewController: UIViewController {
 
     @IBOutlet weak var mainCollectionView: UICollectionView!
     private var presenter: ContactListPresenter!
+    private let refreshControl = UIRefreshControl()
     
     init(presenter: ContactListPresenter) {
         self.presenter = presenter
@@ -40,8 +41,16 @@ class ContactListViewController: UIViewController {
         )
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
+        mainCollectionView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshAction), for: .valueChanged)
     }
 
+    @objc private func refreshAction() {
+        refreshControl.beginRefreshing()
+        self.presenter.getContactList()
+        mainCollectionView.reloadData()
+        refreshControl.endRefreshing()
+    }
 
     @objc private func addAction() {
         
