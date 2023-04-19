@@ -14,7 +14,9 @@ class ContactDetailViewController: UIViewController {
     @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     
     private var presenter: ContactDetailPresenter!
-    private let datePicker = UIDatePicker()
+    private var datePicker = UIDatePicker()
+    private var datePickerDate: Date?
+    private var datePickerDidSelectDate: (() -> Void)?
     
     init(presenter: ContactDetailPresenter) {
         self.presenter = presenter
@@ -46,7 +48,16 @@ class ContactDetailViewController: UIViewController {
         
         self.tableViewHeightConstraint.constant = CGFloat(totalData) * 100
         print(self.tableViewHeightConstraint.constant)
+        handleKeyboardDismissOnViewTapped()
     }
+    
+    private func handleKeyboardDismissOnViewTapped() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    
     
     @objc private func cancelAction() {
         self.navigationController?.popViewController(animated: true)
@@ -57,9 +68,23 @@ class ContactDetailViewController: UIViewController {
     }
     
     @objc private func openCalendarPicker() {
+        datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
+        datePicker.addTarget(self, action: #selector(getDataAction), for: .valueChanged)
         
+        self.view.addSubview(datePicker)
         
+    }
+    
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    @objc private func getDataAction(_ sender: UIDatePicker) {
+        self.datePickerDate = sender.date
+        datePickerDidSelectDate?()
+        datePicker.removeFromSuperview()
     }
 }
 
@@ -80,9 +105,11 @@ extension ContactDetailViewController: UITableViewDataSource {
             cell.titleLabel.text = data[indexPath.row].title
             cell.mainTextField.text = data[indexPath.row].value
             cell.textFieldDidEndEditing = {
-                if indexPath.row != data.endIndex {
+                if indexPath.row + 1 != data.endIndex  {
+                    
                     let newIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
                     (tableView.cellForRow(at: indexPath) as! DetailTableViewCell).mainTextField.resignFirstResponder()
+                    self.dismissKeyboard()
                     (tableView.cellForRow(at: newIndexPath) as! DetailTableViewCell).mainTextField.becomeFirstResponder()
                 }
             }
@@ -90,6 +117,17 @@ extension ContactDetailViewController: UITableViewDataSource {
             let data = presenter.getOldData().subInformation
             cell.titleLabel.text = data[indexPath.row].title
             cell.mainTextField.text = data[indexPath.row].value
+            if indexPath.row == data.endIndex {
+                cell.textFieldDidBeginEditing = {
+                    cell.mainTextField.inputView = self.datePicker
+                }
+                datePickerDidSelectDate = {
+                        let formatter = DateFormatter()
+                        formatter.dateFormat = "dd/MMMM/yyyy"
+                        cell.mainTextField.text = formatter.string(from: self.datePickerDate ?? Date())
+                }
+                    
+            }
         }
         cell.selectionStyle = .none
         return cell

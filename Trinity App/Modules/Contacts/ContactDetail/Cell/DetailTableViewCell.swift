@@ -15,10 +15,12 @@ class DetailTableViewCell: UITableViewCell {
     static let identifier: String = "DetailTableViewCell"
     @objc var textFieldDidBeginEditing: (() -> Void)?
     @objc var textFieldDidEndEditing: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.mainTextField.addTarget(self, action: #selector(getter: textFieldDidEndEditing), for: .editingDidEnd)
-        self.mainTextField.addTarget(self, action: #selector(getter: textFieldDidBeginEditing), for: .editingDidBegin)
+        self.mainTextField.addTarget(self, action: #selector(endEditingAction), for: .editingDidEnd)
+        
+        self.mainTextField.addTarget(self, action: #selector(beginEditingAction), for: .editingDidBegin)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -26,5 +28,10 @@ class DetailTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+    @objc private func endEditingAction() {
+        textFieldDidEndEditing?()
+    }
+    @objc private func beginEditingAction() {
+        textFieldDidBeginEditing?()
+    }
 }
