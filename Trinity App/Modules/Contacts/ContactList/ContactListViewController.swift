@@ -26,7 +26,7 @@ class ContactListViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Contacts"
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addAction))
-        let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(addAction))
+        let searchButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchAction))
         self.navigationItem.rightBarButtonItem = addButton
         self.navigationItem.leftBarButtonItem = searchButton
         
@@ -53,6 +53,10 @@ class ContactListViewController: UIViewController {
     }
 
     @objc private func addAction() {
+        
+    }
+    
+    @objc private func searchAction() {
         
     }
 }
