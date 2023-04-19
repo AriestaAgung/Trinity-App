@@ -26,6 +26,9 @@
 		E5553C9929EF9CB80080551B /* ContactDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5553C9729EF9CB80080551B /* ContactDetailViewController.xib */; };
 		E5553C9D29EF9E230080551B /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5553C9B29EF9E230080551B /* DetailTableViewCell.swift */; };
 		E5553C9E29EF9E230080551B /* DetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5553C9C29EF9E230080551B /* DetailTableViewCell.xib */; };
+		E5553CA129EFA3160080551B /* ContactDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5553CA029EFA3160080551B /* ContactDetailInteractor.swift */; };
+		E5553CA329EFA38C0080551B /* ContactDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5553CA229EFA38C0080551B /* ContactDetailPresenter.swift */; };
+		E5553CA629EFA82C0080551B /* ContactDetailViewDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5553CA529EFA82C0080551B /* ContactDetailViewDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +52,9 @@
 		E5553C9729EF9CB80080551B /* ContactDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactDetailViewController.xib; sourceTree = "<group>"; };
 		E5553C9B29EF9E230080551B /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		E5553C9C29EF9E230080551B /* DetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailTableViewCell.xib; sourceTree = "<group>"; };
+		E5553CA029EFA3160080551B /* ContactDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailInteractor.swift; sourceTree = "<group>"; };
+		E5553CA229EFA38C0080551B /* ContactDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailPresenter.swift; sourceTree = "<group>"; };
+		E5553CA529EFA82C0080551B /* ContactDetailViewDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +154,6 @@
 				E5553C8729EF8DDA0080551B /* ContactListViewController.swift */,
 				E5553C8829EF8DDA0080551B /* ContactListViewController.xib */,
 				E5553C8B29EF8DE60080551B /* ContactListInteractor.swift */,
-				E5553C8D29EF8EF60080551B /* contactList.json */,
 				E5553C8F29EF8F5C0080551B /* ContactModel.swift */,
 				E5553C9129EF92130080551B /* ContactListPresenter.swift */,
 			);
@@ -170,6 +175,9 @@
 				E5553C9A29EF9E090080551B /* Cell */,
 				E5553C9629EF9CB80080551B /* ContactDetailViewController.swift */,
 				E5553C9729EF9CB80080551B /* ContactDetailViewController.xib */,
+				E5553CA029EFA3160080551B /* ContactDetailInteractor.swift */,
+				E5553CA229EFA38C0080551B /* ContactDetailPresenter.swift */,
+				E5553CA529EFA82C0080551B /* ContactDetailViewDataModel.swift */,
 			);
 			path = ContactDetail;
 			sourceTree = "<group>";
@@ -186,11 +194,20 @@
 		E5553C9F29EFA17D0080551B /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				E5553CA429EFA7AC0080551B /* mock */,
 				E5553C9329EF96440080551B /* ContactListFactory.swift */,
 				E5553C9529EF9C910080551B /* ContactDetail */,
 				E5553C8129EF8BDB0080551B /* ContactList */,
 			);
 			path = Contacts;
+			sourceTree = "<group>";
+		};
+		E5553CA429EFA7AC0080551B /* mock */ = {
+			isa = PBXGroup;
+			children = (
+				E5553C8D29EF8EF60080551B /* contactList.json */,
+			);
+			path = mock;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,12 +291,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5553CA329EFA38C0080551B /* ContactDetailPresenter.swift in Sources */,
 				E52BB99129EEF7450088E639 /* NetworkManager.swift in Sources */,
+				E5553CA629EFA82C0080551B /* ContactDetailViewDataModel.swift in Sources */,
 				E5553C9429EF96440080551B /* ContactListFactory.swift in Sources */,
 				E5553C9D29EF9E230080551B /* DetailTableViewCell.swift in Sources */,
 				E5553C8C29EF8DE60080551B /* ContactListInteractor.swift in Sources */,
 				E5553C8929EF8DDA0080551B /* ContactListViewController.swift in Sources */,
 				E5553C9229EF92130080551B /* ContactListPresenter.swift in Sources */,
+				E5553CA129EFA3160080551B /* ContactDetailInteractor.swift in Sources */,
 				E5553C8529EF8C620080551B /* ContactCollectionViewCell.swift in Sources */,
 				E5553C9829EF9CB80080551B /* ContactDetailViewController.swift in Sources */,
 				E52BB97729EEE6780088E639 /* AppDelegate.swift in Sources */,

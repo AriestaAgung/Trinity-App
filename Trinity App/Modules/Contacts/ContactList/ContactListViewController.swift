@@ -8,7 +8,7 @@
 import UIKit
 
 class ContactListViewController: UIViewController {
-
+    
     @IBOutlet weak var mainCollectionView: UICollectionView!
     private var presenter: ContactListPresenter!
     private let refreshControl = UIRefreshControl()
@@ -30,7 +30,7 @@ class ContactListViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = addButton
         self.navigationItem.leftBarButtonItem = searchButton
         
-
+        
         presenter.getContactList()
         mainCollectionView.register(
             UINib(
@@ -44,14 +44,14 @@ class ContactListViewController: UIViewController {
         mainCollectionView.refreshControl = refreshControl
         refreshControl.addTarget(self, action: #selector(refreshAction), for: .valueChanged)
     }
-
+    
     @objc private func refreshAction() {
         refreshControl.beginRefreshing()
         self.presenter.getContactList()
         mainCollectionView.reloadData()
         refreshControl.endRefreshing()
     }
-
+    
     @objc private func addAction() {
         
     }
@@ -80,7 +80,13 @@ extension ContactListViewController: UICollectionViewDataSource {
 
 extension ContactListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let collectionViewSize = collectionView.frame.size.width - 48
-            return CGSize(width: collectionViewSize/2, height: 128)
+        let collectionViewSize = collectionView.frame.size.width - 48
+        return CGSize(width: collectionViewSize/2, height: 128)
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let data = presenter.contactData {
+            let vc = ContactListFactory.shared.createContactDetailPage(data: data[indexPath.row], dataIndex: indexPath.row)
+            self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
 }

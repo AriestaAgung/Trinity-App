@@ -13,9 +13,12 @@ class DetailTableViewCell: UITableViewCell {
     @IBOutlet weak var mainTextField: UITextField!
     static let nib: UINib = UINib(nibName: "DetailTableViewCell", bundle: nil)
     static let identifier: String = "DetailTableViewCell"
+    @objc var textFieldDidBeginEditing: (() -> Void)?
+    @objc var textFieldDidEndEditing: (() -> Void)?
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.mainTextField.addTarget(self, action: #selector(getter: textFieldDidEndEditing), for: .editingDidEnd)
+        self.mainTextField.addTarget(self, action: #selector(getter: textFieldDidBeginEditing), for: .editingDidBegin)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

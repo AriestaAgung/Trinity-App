@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="avatarView" destination="atm-dN-AKb" id="4A2-w5-D1p"/>
                 <outlet property="detailTableView" destination="lYG-Um-g3g" id="Okt-Wl-5GC"/>
+                <outlet property="tableViewHeightConstraint" destination="D1D-l9-5R7" id="gKI-m6-wiY"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

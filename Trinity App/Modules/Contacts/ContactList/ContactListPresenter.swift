@@ -23,5 +23,7 @@ extension ContactListPresenter {
             self.contactData = contactData
         }
     }
-    
+    func createNewData(data: [ContactModel]) {
+        self.contactData = data
+    }
 }

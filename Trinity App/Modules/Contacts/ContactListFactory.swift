@@ -18,5 +18,11 @@ extension ContactListFactory {
         return vc
     }
     
-    
+    func createContactDetailPage(data: ContactModel, dataIndex: Int) -> ContactDetailViewController {
+        let interactor = ContactDetailInteractor.shared
+        let presenter = ContactDetailPresenter(oldData: data, interactor: interactor)
+        let vc = ContactDetailViewController(presenter: presenter)
+        return vc
+        
+    }
 }
